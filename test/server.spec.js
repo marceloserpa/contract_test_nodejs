@@ -23,11 +23,41 @@ describe('POST /note/v1/notes/', function() {
       .expect(200, done);
   });
 
-  it('should throw errors', function(done) {
+  it('title is required field', function(done) {
     const note = {description: 'description ok'}
     request(app)
       .post('/note/v1/notes/')
       .send(note)
+      .expect(res => {
+        res.body.lenght = 1;
+        res.body[0].param = 'title';
+        res.body[0].msg = 'required';
+      })
       .expect(400, done);
   });
+
+  it('description is required field', function(done) {
+    const note = {title: 'test'}
+    request(app)
+      .post('/note/v1/notes/')
+      .send(note)
+      .expect(res => {
+        res.body.lenght = 1;
+        res.body[0].param = 'description';
+        res.body[0].msg = 'required';
+      })
+      .expect(400, done);
+  });
+
+  it('send any required field', function(done) {
+    const note = {title: 'test'}
+    request(app)
+      .post('/note/v1/notes/')
+      .send(note)
+      .expect(res => {
+        res.body.lenght = 2;
+      })
+      .expect(400, done);
+  });  
+
 });
