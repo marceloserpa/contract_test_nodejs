@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "./node_modules/mocha/bin/mocha --timeout 15000"
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +15,9 @@
     "mongoose": "^4.9.2"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "mocha": "^3.2.0",
+    "mockery": "^2.0.0",
     "supertest": "^3.0.0"
   }
 }

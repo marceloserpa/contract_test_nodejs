@@ -20,8 +20,16 @@ var NoteController = (NoteRepository) => {
         },
         get: (req, res) => {
             NoteRepository.findAll()
-                .then(notes => res.send(notes))
+                .then(notes => res.send(notes.map(mapToResponse)))
                 .catch(err => console.log(err));
+            
+            function mapToResponse(n){
+                return {
+                    title: n.title,
+                    description: n.description
+                }
+            };
+
         }
     }
 }

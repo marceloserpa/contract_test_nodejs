@@ -1,7 +1,4 @@
 
-
-var Note = require('../models');
-
 var NoteRepository = (NoteSchema) => {
     return {
         save: (newNote) => {
